@@ -27,19 +27,7 @@ const pad = (n) => String(n).padStart(2, '0');
 const clamp = (n) => Math.max(0, Math.min(slides.length - 1, n));
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isSmallScreen = () => window.innerWidth <= 760;
-
-const guideTexts = [
-  'Comecem apresentando o tema e a ideia central: gases parecem invisíveis, mas podem ser estudados por pressão, volume e temperatura. Depois, apresentem a equipe e o roteiro.',
-  'Explique que gás perfeito é um modelo simplificado. Ele não copia a realidade com 100% de perfeição, mas ajuda a entender e calcular o comportamento dos gases.',
-  'Mostre que temperatura, pressão e volume são as três grandezas principais. Uma boa frase é: temperatura é agitação, pressão é colisão, volume é espaço.',
-  'Nesta parte, destaque que a fórmula pV = nRT junta todas as variáveis. Reforce que a temperatura precisa estar em Kelvin nos cálculos.',
-  'Explique que isotérmica significa temperatura constante. Se o gás é comprimido, o volume diminui e a pressão aumenta. A simulação abaixo ajuda a visualizar isso.',
-  'Na isobárica, a pressão fica constante. Quando o gás esquenta, ele precisa expandir para manter a pressão igual, como em um balão ou pistão.',
-  'Na isocórica, o volume fica constante. O recipiente não aumenta, então quando a temperatura sobe, a pressão também sobe.',
-  'Use este slide para revisar. A palavra iso significa igual: isotérmica mantém T, isobárica mantém p, isocórica mantém V.',
-  'No exercício, mostre o raciocínio: como a temperatura é constante, usamos p₁V₁ = p₂V₂. O volume caiu, então a pressão subiu.',
-  'Feche retomando a ideia principal: gases perfeitos ajudam a entender fenômenos reais por meio de relações simples entre pressão, volume e temperatura.'
-];
+const getSlideWidth = () => Math.round(viewport.getBoundingClientRect().width || document.documentElement.clientWidth || window.innerWidth);
 
 const chapters = [
   { label: 'Capa', go: 0, range: [0, 0] },
@@ -52,7 +40,6 @@ const chapters = [
 ];
 
 let chapterRail;
-let guideDialog;
 
 function createChapterRail() {
   chapterRail = document.createElement('nav');
@@ -81,7 +68,12 @@ function updateChapterRail() {
 
 function render() {
   index = clamp(index);
-  deck.style.transform = `translate3d(${-index * 100}vw,0,0)`;
+  const slideWidth = getSlideWidth();
+  slides.forEach((slide) => {
+    slide.style.flex = `0 0 ${slideWidth}px`;
+    slide.style.minWidth = `${slideWidth}px`;
+  });
+  deck.style.transform = `translate3d(${-index * slideWidth}px,0,0)`;
   slides.forEach((slide, i) => {
     slide.classList.toggle('is-active', i === index);
     if (i === index) slide.scrollTop = 0;
@@ -110,7 +102,7 @@ nextBtn.addEventListener('click', next);
 homeBtn.addEventListener('click', () => goTo(0));
 
 window.addEventListener('keydown', (event) => {
-  if (overviewDialog.open || guideDialog?.open) return;
+  if (overviewDialog.open) return;
   if (['ArrowRight', 'PageDown', ' '].includes(event.key)) {
     event.preventDefault();
     next();
@@ -127,16 +119,12 @@ window.addEventListener('keydown', (event) => {
     event.preventDefault();
     goTo(slides.length - 1);
   }
-  if (event.key.toLowerCase() === 'r') {
-    event.preventDefault();
-    openGuide();
-  }
 });
 
 window.addEventListener(
   'wheel',
   (event) => {
-    if (overviewDialog.open || guideDialog?.open) return;
+    if (overviewDialog.open) return;
     const horizontal = Math.abs(event.deltaX) > Math.abs(event.deltaY) * 1.35;
     if (!horizontal) return;
     const power = event.deltaX;
@@ -151,7 +139,7 @@ window.addEventListener(
 );
 
 viewport.addEventListener('pointerdown', (event) => {
-  if (overviewDialog.open || guideDialog?.open || event.button !== 0) return;
+  if (overviewDialog.open || event.button !== 0) return;
   tracking = true;
   startX = lastX = event.clientX;
   startY = lastY = event.clientY;
@@ -165,7 +153,7 @@ viewport.addEventListener('pointercancel', () => {
   tracking = false;
 });
 viewport.addEventListener('pointerup', (event) => {
-  if (!tracking || overviewDialog.open || guideDialog?.open) return;
+  if (!tracking || overviewDialog.open) return;
   tracking = false;
   const dx = (event.clientX || lastX) - startX;
   const dy = (event.clientY || lastY) - startY;
@@ -210,58 +198,6 @@ closeOverview.addEventListener('click', () => overviewDialog.close());
 overviewDialog.addEventListener('click', (event) => {
   if (event.target === overviewDialog) overviewDialog.close();
 });
-
-function createGuide() {
-  const guideBtn = document.createElement('button');
-  guideBtn.className = 'text-btn guide-btn';
-  guideBtn.type = 'button';
-  guideBtn.textContent = 'Roteiro';
-  guideBtn.addEventListener('click', openGuide);
-  document.querySelector('.top-actions')?.prepend(guideBtn);
-
-  guideDialog = document.createElement('dialog');
-  guideDialog.className = 'guide-dialog';
-  guideDialog.innerHTML = `<div class="guide-card"><span class="eyebrow">Modo apresentação guiada</span><h2 class="guide-title" id="guideTitle"></h2><p class="guide-text" id="guideText"></p><div class="guide-actions"><button id="guideClose">Fechar</button><button id="guidePrev">Slide anterior</button><button class="primary" id="guideNext">Próximo slide</button></div></div>`;
-  document.body.appendChild(guideDialog);
-
-  guideDialog.querySelector('#guideClose').addEventListener('click', () => guideDialog.close());
-  guideDialog.querySelector('#guidePrev').addEventListener('click', () => {
-    guideDialog.close();
-    prev();
-    setTimeout(openGuide, 660);
-  });
-  guideDialog.querySelector('#guideNext').addEventListener('click', () => {
-    guideDialog.close();
-    next();
-    setTimeout(openGuide, 660);
-  });
-  guideDialog.addEventListener('click', (event) => {
-    if (event.target === guideDialog) guideDialog.close();
-  });
-}
-
-function fillGuide() {
-  guideDialog.querySelector('#guideTitle').textContent = `${pad(index + 1)} • ${slides[index].dataset.title}`;
-  guideDialog.querySelector('#guideText').textContent = guideTexts[index] || 'Explique este slide com calma, conectando a imagem ao texto principal.';
-}
-
-function openGuide() {
-  if (!guideDialog) return;
-  fillGuide();
-  guideDialog.showModal();
-}
-
-function createStartButton() {
-  const startBtn = document.createElement('button');
-  startBtn.className = 'immersive-start';
-  startBtn.type = 'button';
-  startBtn.textContent = 'Iniciar apresentação guiada';
-  startBtn.addEventListener('click', () => {
-    goTo(0);
-    setTimeout(openGuide, 680);
-  });
-  slides[0]?.appendChild(startBtn);
-}
 
 function createIsothermalSimulation() {
   const isoPanel = slides[4]?.querySelector('.panel');
@@ -315,6 +251,7 @@ function createParticles() {
   document.body.prepend(canvas);
   const ctx = canvas.getContext('2d', { alpha: true });
   let particles = [];
+  let lastParticleFrame = 0;
 
   function resetParticles() {
     const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
@@ -323,7 +260,7 @@ function createParticles() {
     canvas.style.width = innerWidth + 'px';
     canvas.style.height = innerHeight + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const count = Math.min(46, Math.max(24, Math.floor(innerWidth / 32)));
+    const count = Math.min(28, Math.max(16, Math.floor(innerWidth / 56)));
     particles = Array.from({ length: count }, () => ({
       x: Math.random() * innerWidth,
       y: Math.random() * innerHeight,
@@ -333,7 +270,12 @@ function createParticles() {
     }));
   }
 
-  function drawParticles() {
+  function drawParticles(timestamp = 0) {
+    if (timestamp - lastParticleFrame < 33) {
+      rafId = requestAnimationFrame(drawParticles);
+      return;
+    }
+    lastParticleFrame = timestamp;
     ctx.clearRect(0, 0, innerWidth, innerHeight);
     ctx.fillStyle = 'rgba(103,80,164,.50)';
     ctx.strokeStyle = 'rgba(103,80,164,.14)';
@@ -379,11 +321,10 @@ function createParticles() {
 }
 
 createChapterRail();
-createGuide();
-createStartButton();
 createIsothermalSimulation();
 createCredits();
 createParticles();
 
 window.addEventListener('resize', render, { passive: true });
+window.visualViewport?.addEventListener('resize', render, { passive: true });
 render();
