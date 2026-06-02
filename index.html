@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#FFFBFE" />
+  <title>Gases Perfeitos | Trabalho de Física</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell" id="appShell">
+    <header class="topbar" aria-label="Barra superior da apresentação">
+      <button class="icon-button ghost" id="homeBtn" title="Voltar ao início" aria-label="Voltar ao primeiro slide">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5z"/></svg>
+      </button>
+
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <div>
+          <strong>Gases Perfeitos</strong>
+          <small>Trabalho de Física • apresentação horizontal</small>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <button class="text-button" id="overviewBtn" aria-label="Abrir visão geral dos slides">Visão geral</button>
+        <button class="text-button presentation" id="presentBtn" aria-label="Ativar modo apresentação">Modo apresentação</button>
+      </div>
+    </header>
+
+    <main class="deck" id="deck" tabindex="0" aria-label="Slides horizontais do trabalho de Física">
+      <section class="slide hero-slide" data-title="Capa">
+        <div class="slide-content hero-grid">
+          <div class="copy fade-up">
+            <span class="eyebrow">Trabalho de Física</span>
+            <h1>Gases Perfeitos</h1>
+            <p class="lead">Uma apresentação interativa sobre variáveis de estado e transformações gasosas.</p>
+            <div class="metadata-card">
+              <div><strong>Aluno:</strong> Mateus Henrique</div>
+              <div><strong>Turma:</strong> 1º ano do Ensino Médio</div>
+              <div><strong>Professor(a):</strong> __________________</div>
+              <div><strong>Data:</strong> 27/05/2026</div>
+            </div>
+          </div>
+          <figure class="image-card hero-visual fade-up delay-1">
+            <img src="assets/images/hero-molecules.svg" alt="Moléculas de gás em movimento dentro de um recipiente transparente" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Roteiro">
+        <div class="slide-content compact">
+          <div class="section-header fade-up">
+            <span class="eyebrow">Roteiro</span>
+            <h2>O caminho da apresentação</h2>
+            <p>O conteúdo foi organizado como uma linha de raciocínio: conceito, variáveis, fórmulas e transformações.</p>
+          </div>
+          <div class="route-grid">
+            <article class="route-card fade-up delay-1"><span>01</span><strong>Modelo de gás perfeito</strong><p>Como a Física simplifica o comportamento dos gases.</p></article>
+            <article class="route-card fade-up delay-2"><span>02</span><strong>Estado físico</strong><p>Temperatura, pressão e volume como variáveis principais.</p></article>
+            <article class="route-card fade-up delay-3"><span>03</span><strong>Transformações</strong><p>Isotérmica, isobárica e isocórica com exemplos.</p></article>
+            <article class="route-card fade-up delay-4"><span>04</span><strong>Aplicação</strong><p>Comparação rápida e exercício resolvido.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Conceito">
+        <div class="slide-content two-col">
+          <div class="copy fade-up">
+            <span class="eyebrow">Conceito</span>
+            <h2>O que são gases perfeitos?</h2>
+            <p>Gás perfeito é um modelo ideal usado para estudar gases de forma mais simples. Nesse modelo, as partículas são consideradas muito pequenas, estão em movimento constante e não perdem energia nas colisões.</p>
+            <div class="callout success">
+              <strong>Ideia principal:</strong>
+              <span>o comportamento do gás pode ser descrito pela relação entre pressão, volume e temperatura.</span>
+            </div>
+          </div>
+          <div class="glass-panel fade-up delay-1">
+            <h3>Por que esse modelo é útil?</h3>
+            <ul class="clean-list">
+              <li>Ajuda a prever mudanças no gás.</li>
+              <li>Facilita cálculos de Física.</li>
+              <li>Explica situações como balões, seringas e recipientes fechados.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Variáveis">
+        <div class="slide-content two-col visual-first">
+          <figure class="image-card fade-up">
+            <img src="assets/images/variables-lab.svg" alt="Ilustração das variáveis temperatura, pressão e volume" />
+          </figure>
+          <div class="copy fade-up delay-1">
+            <span class="eyebrow">Variáveis de estado</span>
+            <h2>Temperatura, pressão e volume</h2>
+            <div class="stacked-cards">
+              <article><b>Temperatura</b><span>representa o grau de agitação das moléculas.</span></article>
+              <article><b>Pressão</b><span>é a força que o gás exerce nas paredes do recipiente.</span></article>
+              <article><b>Volume</b><span>é o espaço ocupado pelo gás.</span></article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Equação">
+        <div class="slide-content two-col">
+          <div class="copy fade-up">
+            <span class="eyebrow">Equação dos gases</span>
+            <h2>A relação geral</h2>
+            <p>A equação dos gases perfeitos liga as três variáveis principais com a quantidade de matéria do gás.</p>
+            <div class="formula-card huge" aria-label="Equação dos gases perfeitos">pV = nRT</div>
+            <div class="formula-note">Em uma comparação entre dois estados do mesmo gás, usamos:</div>
+            <div class="formula-card">p₁V₁ / T₁ = p₂V₂ / T₂</div>
+          </div>
+          <figure class="image-card fade-up delay-1">
+            <img src="assets/images/equation-poster.svg" alt="Pôster com a equação pV igual a nRT" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="slide transform-slide" data-title="Isotérmica">
+        <div class="slide-content two-col visual-first">
+          <figure class="image-card fade-up">
+            <img src="assets/images/isothermal.svg" alt="Ilustração da transformação isotérmica com seringa e gráfico" />
+          </figure>
+          <div class="copy fade-up delay-1">
+            <span class="eyebrow">Transformação gasosa</span>
+            <h2>Isotérmica</h2>
+            <p>A temperatura permanece constante. Por isso, pressão e volume variam de forma inversa.</p>
+            <div class="formula-card">p₁V₁ = p₂V₂</div>
+            <div class="mini-lab" data-lab="isothermal">
+              <div class="lab-top"><strong>Mini laboratório</strong><span>arraste a pressão</span></div>
+              <label>Pressão <input type="range" min="1" max="6" value="2" step="0.1" data-control="p"></label>
+              <div class="lab-readout"><span>p = <b data-out="p">2.0</b> atm</span><span>V ≈ <b data-out="v">3.0</b> L</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide transform-slide" data-title="Isobárica">
+        <div class="slide-content two-col">
+          <div class="copy fade-up">
+            <span class="eyebrow">Transformação gasosa</span>
+            <h2>Isobárica</h2>
+            <p>A pressão permanece constante. Quando a temperatura aumenta, o volume também aumenta.</p>
+            <div class="formula-card">V₁ / T₁ = V₂ / T₂</div>
+            <div class="example-card"><strong>Exemplo:</strong> um balão aquecido tende a expandir, pois o gás ocupa mais espaço.</div>
+          </div>
+          <figure class="image-card fade-up delay-1">
+            <img src="assets/images/isobaric.svg" alt="Ilustração da transformação isobárica com balão aquecido" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="slide transform-slide" data-title="Isocórica">
+        <div class="slide-content two-col visual-first">
+          <figure class="image-card fade-up">
+            <img src="assets/images/isochoric.svg" alt="Ilustração da transformação isocórica em recipiente rígido" />
+          </figure>
+          <div class="copy fade-up delay-1">
+            <span class="eyebrow">Transformação gasosa</span>
+            <h2>Isocórica ou isovolumétrica</h2>
+            <p>O volume permanece constante. Se a temperatura aumenta, a pressão também aumenta.</p>
+            <div class="formula-card">p₁ / T₁ = p₂ / T₂</div>
+            <div class="example-card"><strong>Exemplo:</strong> gás em um recipiente fechado e rígido sendo aquecido.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Comparação">
+        <div class="slide-content two-col">
+          <div class="copy fade-up">
+            <span class="eyebrow">Memorização rápida</span>
+            <h2>Comparação entre as transformações</h2>
+            <div class="table-card" role="table" aria-label="Tabela comparativa">
+              <div role="row"><b>Transformação</b><b>Constante</b><b>Relação</b></div>
+              <div role="row"><span>Isotérmica</span><span>T</span><span>p ↑, V ↓</span></div>
+              <div role="row"><span>Isobárica</span><span>p</span><span>T ↑, V ↑</span></div>
+              <div role="row"><span>Isocórica</span><span>V</span><span>T ↑, p ↑</span></div>
+            </div>
+          </div>
+          <figure class="image-card fade-up delay-1">
+            <img src="assets/images/comparison-map.svg" alt="Mapa comparativo das transformações gasosas" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Exercício">
+        <div class="slide-content two-col visual-first">
+          <figure class="image-card fade-up">
+            <img src="assets/images/exercise-scene.svg" alt="Caderno com exercício de transformação isotérmica resolvido" />
+          </figure>
+          <div class="copy fade-up delay-1">
+            <span class="eyebrow">Aplicação</span>
+            <h2>Exercício exemplo</h2>
+            <p>Um gás sofre transformação isotérmica. Inicialmente, ele está a 2 atm e ocupa 3 L. Depois, passa a ocupar 2 L. Qual é a nova pressão?</p>
+            <div class="solution-card">
+              <span>p₁V₁ = p₂V₂</span>
+              <span>2 · 3 = p₂ · 2</span>
+              <strong>p₂ = 3 atm</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Quadro">
+        <div class="slide-content two-col">
+          <div class="copy fade-up">
+            <span class="eyebrow">Base do trabalho</span>
+            <h2>Conteúdo retirado da aula</h2>
+            <p>O site foi montado a partir do conteúdo do quadro: variáveis de estado físico e transformações gasosas.</p>
+            <div class="callout">
+              <strong>Resumo do quadro:</strong>
+              <span>temperatura, pressão, volume, isotérmica, isobárica e isocórica.</span>
+            </div>
+          </div>
+          <figure class="image-card board-card fade-up delay-1">
+            <img src="assets/images/quadro-fisica.jpg" alt="Foto do quadro de Física usado como base para o trabalho" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="slide conclusion-slide" data-title="Conclusão">
+        <div class="slide-content two-col visual-first">
+          <figure class="image-card fade-up">
+            <img src="assets/images/conclusion.svg" alt="Foguete e moléculas representando a conclusão sobre gases perfeitos" />
+          </figure>
+          <div class="copy fade-up delay-1">
+            <span class="eyebrow">Conclusão</span>
+            <h2>O que aprendemos?</h2>
+            <p>Os gases perfeitos ajudam a entender como pressão, volume e temperatura se relacionam. Cada transformação mantém uma variável constante e mostra como as outras mudam.</p>
+            <div class="pill-row">
+              <span>Isotérmica: T constante</span>
+              <span>Isobárica: p constante</span>
+              <span>Isocórica: V constante</span>
+            </div>
+            <button class="primary-button" id="finishBtn">Voltar ao começo</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <aside class="progress-panel" aria-label="Progresso da apresentação">
+      <div class="progress-label"><span id="slideNumber">01</span><span id="slideTotal">12</span></div>
+      <div class="progress-track"><span id="progressFill"></span></div>
+    </aside>
+
+    <nav class="bottom-controls" aria-label="Controles de navegação">
+      <button class="nav-button" id="prevBtn" aria-label="Slide anterior">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+      </button>
+      <div class="slide-dots" id="dots" aria-label="Indicadores de slides"></div>
+      <button class="nav-button" id="nextBtn" aria-label="Próximo slide">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+      </button>
+    </nav>
+  </div>
+
+  <dialog class="overview" id="overviewDialog" aria-labelledby="overviewTitle">
+    <div class="overview-head">
+      <div>
+        <span class="eyebrow">Navegação rápida</span>
+        <h2 id="overviewTitle">Escolha um slide</h2>
+      </div>
+      <button class="icon-button" id="closeOverview" aria-label="Fechar visão geral">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.3 5.71 12 12l6.3 6.29-1.41 1.41L10.59 13.41 4.29 19.7 2.88 18.29 9.17 12 2.88 5.71 4.29 4.3l6.3 6.29 6.3-6.29z"/></svg>
+      </button>
+    </div>
+    <div class="overview-grid" id="overviewGrid"></div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
