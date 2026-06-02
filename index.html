@@ -6,16 +6,18 @@
   <meta name="theme-color" content="#fffbfe" />
   <title>Gases Perfeitos | Trabalho de Física</title>
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" as="image" href="assets/images/hero.jpg" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="ambient" aria-hidden="true"></div>
   <div class="progress-line"><span id="progressFill"></span></div>
 
   <header class="topbar">
     <button class="icon-btn" id="homeBtn" title="Voltar para a capa" aria-label="Voltar para a capa">⌂</button>
     <div class="brand">
       <span class="brand-icon">⚛</span>
-      <div><strong>Gases Perfeitos</strong><small>apresentação horizontal • 1 slide por vez</small></div>
+      <div><strong>Gases Perfeitos</strong><small>Física • EJA 3TA • apresentação imersiva</small></div>
     </div>
     <div class="top-actions">
       <button class="text-btn" id="overviewBtn">Visão geral</button>
@@ -26,37 +28,44 @@
   <main class="viewport" id="viewport" aria-label="Apresentação de Física">
     <div class="deck" id="deck">
       <section class="slide cover" data-title="Capa">
-        <img class="slide-bg" src="assets/images/hero.jpg" alt="Ilustração premium de gases perfeitos em laboratório" />
+        <img class="slide-bg" src="assets/images/hero.jpg" alt="Ilustração premium de gases perfeitos em laboratório" loading="eager" />
         <div class="scrim"></div>
         <article class="panel hero-panel reveal">
-          <span class="eyebrow">Trabalho de Física</span>
+          <span class="eyebrow">Trabalho de Física • EJA 3TA</span>
           <h1>Gases Perfeitos</h1>
-          <p class="lead">Um estudo visual sobre como temperatura, pressão e volume explicam o comportamento dos gases.</p>
-          <div class="info-grid four">
-            <span><b>Aluno</b>Mateus Henrique</span>
-            <span><b>Turma</b>1º ano do Ensino Médio</span>
-            <span><b>Professor(a)</b>__________________</span>
-            <span><b>Data</b>27/05/2026</span>
+          <p class="lead">Uma apresentação visual sobre como temperatura, pressão e volume explicam o comportamento dos gases.</p>
+          <div class="team-card">
+            <strong>Equipe</strong>
+            <span>Mateus Henrique</span>
+            <span>Gabriel Carramão</span>
+            <span>Fernanda Celestino</span>
+            <span>Marcos Adilson</span>
+          </div>
+          <div class="info-grid four compact-meta">
+            <span><b>Turma</b>EJA 3TA</span>
+            <span><b>Professor</b>Melque</span>
+            <span><b>Data</b>15 de junho de 2026</span>
+            <span><b>Tema</b>Gases perfeitos</span>
           </div>
           <div class="focus-row">
             <b>Roteiro:</b>
-            <span>modelo ideal</span><span>variáveis de estado</span><span>equação</span><span>transformações</span><span>exercício</span>
+            <span>modelo ideal</span><span>variáveis</span><span>equação</span><span>transformações</span><span>exercício</span>
           </div>
         </article>
       </section>
 
       <section class="slide" data-title="Conceito">
         <div class="slide-layout">
-          <figure class="image-frame reveal"><img src="assets/images/conceito.jpg" alt="Imagem sobre partículas de um gás ideal em movimento" /></figure>
+          <figure class="image-frame reveal"><img src="assets/images/conceito.jpg" alt="Imagem sobre partículas de um gás ideal em movimento" loading="lazy" /></figure>
           <article class="panel reveal delay-1">
             <span class="eyebrow">01 • Conceito</span>
             <h2>O que é um gás perfeito?</h2>
-            <p>Gás perfeito, ou gás ideal, é um modelo físico usado para simplificar o estudo dos gases. Ele descreve o gás como um conjunto de partículas muito pequenas, em movimento constante e com colisões perfeitamente elásticas.</p>
+            <p>Gás perfeito, ou gás ideal, é um modelo físico usado para simplificar o estudo dos gases. Ele descreve o gás como partículas muito pequenas, em movimento constante e com colisões perfeitamente elásticas.</p>
             <div class="info-grid">
-              <span><b>Partículas muito pequenas</b>O volume próprio das moléculas é desprezado no modelo.</span>
+              <span><b>Partículas pequenas</b>O volume próprio das moléculas é desprezado.</span>
               <span><b>Movimento constante</b>As partículas se movem em direções aleatórias.</span>
-              <span><b>Colisões elásticas</b>Nas colisões, a energia cinética total é conservada.</span>
-              <span><b>Modelo ideal</b>É uma aproximação, mas ajuda a entender situações reais.</span>
+              <span><b>Colisões elásticas</b>A energia cinética total é conservada.</span>
+              <span><b>Modelo ideal</b>É uma aproximação útil para entender situações reais.</span>
             </div>
             <div class="callout"><b>Ideia principal:</b> o estado do gás pode ser estudado pela relação entre pressão, volume e temperatura.</div>
           </article>
@@ -77,13 +86,13 @@
             <div class="formula-strip">K = °C + 273</div>
             <p class="note">Quanto maior a temperatura, maior tende a ser a energia cinética das partículas.</p>
           </article>
-          <figure class="image-frame reveal delay-1"><img src="assets/images/variaveis.jpg" alt="Imagem com as variáveis temperatura, pressão e volume" /></figure>
+          <figure class="image-frame reveal delay-1"><img src="assets/images/variaveis.jpg" alt="Imagem com as variáveis temperatura, pressão e volume" loading="lazy" /></figure>
         </div>
       </section>
 
       <section class="slide" data-title="Equação">
         <div class="slide-layout">
-          <figure class="image-frame reveal"><img src="assets/images/equacao.jpg" alt="Imagem explicando a equação pV igual a nRT" /></figure>
+          <figure class="image-frame reveal"><img src="assets/images/equacao.jpg" alt="Imagem explicando a equação pV igual a nRT" loading="lazy" /></figure>
           <article class="panel reveal delay-1">
             <span class="eyebrow">03 • Equação geral</span>
             <h2>Equação dos gases perfeitos</h2>
@@ -116,13 +125,13 @@
             </div>
             <div class="callout"><b>Exemplo:</b> uma seringa sendo comprimida lentamente, mantendo contato térmico com o ambiente.</div>
           </article>
-          <figure class="image-frame reveal delay-1"><img src="assets/images/isotermica.jpg" alt="Imagem da transformação isotérmica com compressão lenta" /></figure>
+          <figure class="image-frame reveal delay-1"><img src="assets/images/isotermica.jpg" alt="Imagem da transformação isotérmica com compressão lenta" loading="lazy" /></figure>
         </div>
       </section>
 
       <section class="slide" data-title="Isobárica">
         <div class="slide-layout">
-          <figure class="image-frame reveal"><img src="assets/images/isobarica.jpg" alt="Imagem da transformação isobárica com gás aquecido" /></figure>
+          <figure class="image-frame reveal"><img src="assets/images/isobarica.jpg" alt="Imagem da transformação isobárica com gás aquecido" loading="lazy" /></figure>
           <article class="panel reveal delay-1">
             <span class="eyebrow">05 • Transformação gasosa</span>
             <h2>Isobárica</h2>
@@ -154,13 +163,13 @@
             </div>
             <div class="callout"><b>Exemplo:</b> gás dentro de um recipiente rígido e fechado sendo aquecido.</div>
           </article>
-          <figure class="image-frame reveal delay-1"><img src="assets/images/isocorica.jpg" alt="Imagem da transformação isocórica com recipiente rígido" /></figure>
+          <figure class="image-frame reveal delay-1"><img src="assets/images/isocorica.jpg" alt="Imagem da transformação isocórica com recipiente rígido" loading="lazy" /></figure>
         </div>
       </section>
 
       <section class="slide" data-title="Comparação">
         <div class="slide-layout">
-          <figure class="image-frame reveal"><img src="assets/images/comparacao.jpg" alt="Imagem comparando isotérmica, isobárica e isocórica" /></figure>
+          <figure class="image-frame reveal"><img src="assets/images/comparacao.jpg" alt="Imagem comparando isotérmica, isobárica e isocórica" loading="lazy" /></figure>
           <article class="panel reveal delay-1">
             <span class="eyebrow">07 • Comparação rápida</span>
             <h2>Como memorizar?</h2>
@@ -190,13 +199,13 @@
             </div>
             <div class="callout"><b>Interpretação:</b> o volume diminuiu, então a pressão aumentou.</div>
           </article>
-          <figure class="image-frame reveal delay-1"><img src="assets/images/exercicio.jpg" alt="Imagem com exercício resolvido de transformação isotérmica" /></figure>
+          <figure class="image-frame reveal delay-1"><img src="assets/images/exercicio.jpg" alt="Imagem com exercício resolvido de transformação isotérmica" loading="lazy" /></figure>
         </div>
       </section>
 
       <section class="slide" data-title="Conclusão">
         <div class="slide-layout">
-          <figure class="image-frame reveal"><img src="assets/images/conclusao.jpg" alt="Infográfico final resumindo gases perfeitos e transformações" /></figure>
+          <figure class="image-frame reveal"><img src="assets/images/conclusao.jpg" alt="Infográfico final resumindo gases perfeitos e transformações" loading="lazy" /></figure>
           <article class="panel reveal delay-1">
             <span class="eyebrow">09 • Conclusão</span>
             <h2>Resumo final</h2>
