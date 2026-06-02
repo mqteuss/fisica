@@ -35,8 +35,9 @@ const chapters = [
   { label: 'Variáveis', go: 2, range: [2, 2] },
   { label: 'Equação', go: 3, range: [3, 3] },
   { label: 'Transformações', go: 4, range: [4, 7] },
-  { label: 'Exercício', go: 8, range: [8, 8] },
-  { label: 'Conclusão', go: 9, range: [9, 9] }
+  { label: 'Aplicações', go: 8, range: [8, 8] },
+  { label: 'Exercício', go: 9, range: [9, 9] },
+  { label: 'Conclusão', go: 10, range: [10, 10] }
 ];
 
 let chapterRail;
@@ -234,7 +235,7 @@ function createIsothermalSimulation() {
 }
 
 function createCredits() {
-  const conclusionPanel = slides[9]?.querySelector('.panel');
+  const conclusionPanel = slides[10]?.querySelector('.panel');
   if (!conclusionPanel || conclusionPanel.querySelector('.credits-card')) return;
 
   const credits = document.createElement('div');
